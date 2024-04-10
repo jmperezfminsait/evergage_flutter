@@ -15,6 +15,8 @@ Interaction Studio (Formerly Evergage) Plugin for Flutter
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.dependency 'Evergage'
+  s.static_framework = true
   s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
