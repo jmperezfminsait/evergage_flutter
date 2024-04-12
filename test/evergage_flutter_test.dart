@@ -10,6 +10,12 @@ class MockEvergageFlutterPlatform
 
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
+
+  @override
+  Future<void> initializeEvergage({required String account, required String dataset, required String userId, required bool usePushNotification}) {
+    // TODO: implement initializeEvergage
+    throw UnimplementedError();
+  }
 }
 
 void main() {

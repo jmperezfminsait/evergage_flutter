@@ -1,0 +1,35 @@
+PODS:
+  - Evergage (1.4.0)
+  - evergage_flutter (0.0.1):
+    - Evergage
+    - Flutter
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - evergage_flutter (from `.symlinks/plugins/evergage_flutter/ios`)
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Evergage
+
+EXTERNAL SOURCES:
+  evergage_flutter:
+    :path: ".symlinks/plugins/evergage_flutter/ios"
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  Evergage: cfc0243b769c07fce5ccc4562505ae5f299c8749
+  evergage_flutter: 7394cd43e72834a0817950f3f45e15b304ec81cd
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  integration_test: 13825b8a9334a850581300559b8839134b124670
+
+PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
+
+COCOAPODS: 1.14.3

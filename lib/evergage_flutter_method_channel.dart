@@ -14,4 +14,23 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+
+  Future<void> initializeEvergage({
+    required String account,
+    required String dataset,
+    required String userId,
+    required bool usePushNotification,
+  }) async {
+    try {
+      await methodChannel.invokeMethod('initializeEvergage', {
+        'account': account,
+        'dataset': dataset,
+        'userId': userId,
+        'usePushNotification': usePushNotification,
+      });
+    } on PlatformException catch (e) {
+      print("Failed to initialize Evergage: '${e.message}'.");
+    }
+  }
 }

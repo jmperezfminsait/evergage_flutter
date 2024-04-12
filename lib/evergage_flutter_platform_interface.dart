@@ -26,4 +26,13 @@ abstract class EvergageFlutterPlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<void> initializeEvergage({
+    required String account,
+    required String dataset,
+    required String userId,
+    required bool usePushNotification,
+  }) {
+    throw UnimplementedError('initializeEvergage() has not been implemented.');
+  }
 }
