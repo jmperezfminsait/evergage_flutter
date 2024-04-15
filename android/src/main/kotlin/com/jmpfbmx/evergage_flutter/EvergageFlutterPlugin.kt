@@ -2,7 +2,10 @@ package com.jmpfbmx.evergage_flutter
 
 import android.app.Activity
 import android.content.Context
+import android.widget.Toast
 import androidx.annotation.NonNull
+
+import org.json.*
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -12,10 +15,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
-import com.evergage.android.Evergage
-import com.evergage.android.ClientConfiguration
-import com.evergage.android.LogLevel
-import com.evergage.android.Screen
+import com.evergage.android.*
 
 /** EvergageFlutterPlugin */
 class EvergageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -46,6 +46,41 @@ class EvergageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
         val userId = arguments["userId"] as String
         val usePushNotifications = arguments["usePushNotification"] as Boolean
         initializeEvergage(account, dataset, userId, usePushNotifications)
+        result.success(null)
+      }
+      "setAccountId" -> {
+        val arguments = call.arguments as Map<*, *>
+        val accountId = arguments["accountId"] as String
+        setAccountId(accountId)
+        result.success(null)
+      }
+      "getAccountId" -> {
+        result.success(getAccountId())
+      }
+      "getAnonymousId" -> {
+        result.success(getAnonymousId())
+      }
+      "getUserId" -> {
+        result.success(getUserId())
+      }
+      "setAccountAttribute" -> {
+        val arguments = call.arguments as Map<*, *>
+        val attributeName = arguments["attributeName"] as String
+        val attributeValue = arguments["attributeValue"] as String
+        setAccountAttribute(attributeName, attributeValue)
+        result.success(null)
+      }
+      "setUserAttribute" -> {
+        val arguments = call.arguments as Map<*, *>
+        val attributeName = arguments["attributeName"] as String
+        val attributeValue = arguments["attributeValue"] as String
+        setUserAttribute(attributeName, attributeValue)
+        result.success(null)
+      }
+      "setFirebaseToken" -> {
+        val arguments = call.arguments as Map<*, *>
+        val token = arguments["token"] as String
+        setFirebaseToken(token)
         result.success(null)
       }
       "getPlatformVersion" -> {
@@ -81,6 +116,41 @@ class EvergageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
             .dataset(dataset)
             .usePushNotifications(usePushNotifications)
             .build())
+  }
+
+  private fun setAccountId(accountId: String) {
+    val evergage = Evergage.getInstance()
+    evergage.setAccountId(accountId)
+  }
+
+  private fun getAccountId(): String? {
+    val evergage = Evergage.getInstance()
+    return evergage.getAccountId()
+  }
+
+  private fun getAnonymousId(): String? {
+    val evergage = Evergage.getInstance()
+    return evergage.getAnonymousId()
+  }
+
+  private fun getUserId(): String? {
+    val evergage = Evergage.getInstance()
+    return evergage.getUserId()
+  }
+
+  private fun setAccountAttribute(attributeName: String, attributeValue: String) {
+    val evergage = Evergage.getInstance()
+    evergage.setAccountAttribute(attributeName, attributeValue)
+  }
+
+  private fun setUserAttribute(attributeName: String, attributeValue: String) {
+    val evergage = Evergage.getInstance()
+    evergage.setUserAttribute(attributeName, attributeValue)
+  }
+
+  private fun setFirebaseToken(token: String) {
+    val evergage = Evergage.getInstance()
+    evergage.setFirebaseToken(token)
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {

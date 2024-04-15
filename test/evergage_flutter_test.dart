@@ -16,6 +16,48 @@ class MockEvergageFlutterPlatform
     // TODO: implement initializeEvergage
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> getAccountId() {
+    // TODO: implement getAccountId
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> getAnonymousId() {
+    // TODO: implement getAnonymousId
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> getUserId() {
+    // TODO: implement getUserId
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setAccountId({required String accountId}) {
+    // TODO: implement setAccountId
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setAccountAttribute({required String attributeName, required String attributeValue}) {
+    // TODO: implement setAccountAttribute
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setUserAttribute({required String attributeName, required String attributeValue}) {
+    // TODO: implement setUserAttribute
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setFirebaseToken({required String token}) {
+    // TODO: implement setFirebaseToken
+    throw UnimplementedError();
+  }
 }
 
 void main() {

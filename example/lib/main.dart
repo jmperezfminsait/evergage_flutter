@@ -18,6 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   final _evergageFlutterPlugin = EvergageFlutter();
+  bool evergageInitialization = false;
 
   @override
   void initState() {
@@ -49,6 +50,37 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> initializeEvergage() async {
     await _evergageFlutterPlugin.initializeEvergage("", "", "", true);
+    setState(() {
+      evergageInitialization = true;
+    });
+  }
+
+  Future<void> setAccountId() async {
+    await _evergageFlutterPlugin.setAccountId(" ");
+  }
+
+  Future<void> getAccountId() async {
+    await _evergageFlutterPlugin.getAccountId();
+  }
+
+  Future<void> getAnonymousId() async {
+    await _evergageFlutterPlugin.getAnonymousId();
+  }
+
+  Future<void> getUserId() async {
+    await _evergageFlutterPlugin.getUserId();
+  }
+
+  Future<void> setAccountAttribute() async {
+    await _evergageFlutterPlugin.setAccountAttribute("", "");
+  }
+
+  Future<void> setUserAttribute() async {
+    await _evergageFlutterPlugin.setUserAttribute("", "");
+  }
+
+  Future<void> setFirebaseToken() async {
+    await _evergageFlutterPlugin.setFirebaseToken("");
   }
 
   @override
@@ -69,6 +101,50 @@ class _MyAppState extends State<MyApp> {
               },
               child: const Text("Initialize evergage"),
             ),
+            if(evergageInitialization)...[
+              TextButton(
+                onPressed: () {
+                  setAccountId();
+                },
+                child: const Text("Set account id"),
+              ),
+              TextButton(
+                onPressed: () {
+                  getAccountId();
+                },
+                child: const Text("Get account id"),
+              ),
+              TextButton(
+                onPressed: () {
+                  getAnonymousId();
+                },
+                child: const Text("Get anonymous id"),
+              ),
+              TextButton(
+                onPressed: () {
+                  getUserId();
+                },
+                child: const Text("Get user id"),
+              ),
+              TextButton(
+                onPressed: () {
+                  setAccountAttribute();
+                },
+                child: const Text("Set account attribute"),
+              ),
+              TextButton(
+                onPressed: () {
+                  setUserAttribute();
+                },
+                child: const Text("Set user attribute"),
+              ),
+              TextButton(
+                onPressed: () {
+                  setFirebaseToken();
+                },
+                child: const Text("Set Firebase Token"),
+              ),
+            ]
           ],
         ),
       ),
