@@ -120,22 +120,22 @@ class EvergageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
 
   private fun setAccountId(accountId: String) {
     val evergage = Evergage.getInstance()
-    evergage.setAccountId(accountId)
+    evergage.accountId = accountId
   }
 
   private fun getAccountId(): String? {
     val evergage = Evergage.getInstance()
-    return evergage.getAccountId()
+    return evergage.accountId
   }
 
   private fun getAnonymousId(): String? {
     val evergage = Evergage.getInstance()
-    return evergage.getAnonymousId()
+    return evergage.anonymousId
   }
 
   private fun getUserId(): String? {
     val evergage = Evergage.getInstance()
-    return evergage.getUserId()
+    return evergage.userId
   }
 
   private fun setAccountAttribute(attributeName: String, attributeValue: String) {
