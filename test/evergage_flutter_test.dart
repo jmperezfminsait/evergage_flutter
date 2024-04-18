@@ -58,6 +58,12 @@ class MockEvergageFlutterPlatform
     // TODO: implement setFirebaseToken
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> trackAction({required String action}) {
+    // TODO: implement trackAction
+    throw UnimplementedError();
+  }
 }
 
 void main() {

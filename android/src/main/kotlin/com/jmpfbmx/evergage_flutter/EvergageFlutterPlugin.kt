@@ -83,6 +83,16 @@ class EvergageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
         setFirebaseToken(token)
         result.success(null)
       }
+      "trackAction" -> {
+        val arguments = call.arguments as Map<*, *>
+        val action = arguments["action"] as String
+        if (screen != null) {
+          screen.trackAction(action)
+        } else {
+          contextEvergage?.trackAction(action)
+        }
+        result.success(null)
+      }
       "getPlatformVersion" -> {
         result.success("Android ${android.os.Build.VERSION.RELEASE}")
       }

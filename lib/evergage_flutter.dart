@@ -38,4 +38,8 @@ class EvergageFlutter {
   Future<void> setFirebaseToken(String token) async {
     await EvergageFlutterPlatform.instance.setFirebaseToken(token: token);
   }
+
+  Future<void> trackAction(String action) async {
+    await EvergageFlutterPlatform.instance.trackAction(action: action);
+  }
 }

@@ -63,4 +63,8 @@ abstract class EvergageFlutterPlatform extends PlatformInterface {
   Future<void> setFirebaseToken({required String token}) {
     throw UnimplementedError('setFirebaseToken() has not been implemented.');
   }
+
+  Future<void> trackAction({required String action}) {
+    throw UnimplementedError('trackAction() has not been implemented.');
+  }
 }

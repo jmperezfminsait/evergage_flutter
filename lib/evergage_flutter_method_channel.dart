@@ -90,4 +90,12 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
       print("Failed to set firebase token: '${e.message}'.");
     }
   }
+
+  Future<void> trackAction({required String action}) async {
+    try {
+      await methodChannel.invokeMethod('trackAction');
+    } on PlatformException catch (e) {
+      print("Failed to track action: '${e.message}'.");
+    }
+  }
 }

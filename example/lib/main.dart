@@ -83,6 +83,10 @@ class _MyAppState extends State<MyApp> {
     await _evergageFlutterPlugin.setFirebaseToken("");
   }
 
+  Future<void> trackAction() async {
+    await _evergageFlutterPlugin.trackAction("");
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -143,6 +147,12 @@ class _MyAppState extends State<MyApp> {
                   setFirebaseToken();
                 },
                 child: const Text("Set Firebase Token"),
+              ),
+              TextButton(
+                onPressed: () {
+                  trackAction();
+                },
+                child: const Text("Track Action"),
               ),
             ]
           ],
