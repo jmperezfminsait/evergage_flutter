@@ -11,7 +11,8 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
 
@@ -35,9 +36,8 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
 
   Future<void> setAccountId({required String accountId}) async {
     try {
-      await methodChannel.invokeMethod('setAccountId', {
-        'accountId': accountId
-      });
+      await methodChannel
+          .invokeMethod('setAccountId', {'accountId': accountId});
     } on PlatformException catch (e) {
       print("Failed to set Evergage accountId: '${e.message}'.");
     }
@@ -67,7 +67,8 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
-  Future<void> setAccountAttribute({required String attributeName, required String attributeValue}) async {
+  Future<void> setAccountAttribute(
+      {required String attributeName, required String attributeValue}) async {
     try {
       await methodChannel.invokeMethod('setAccountAttribute');
     } on PlatformException catch (e) {
@@ -75,9 +76,13 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
-  Future<void> setUserAttribute({required String attributeName, required String attributeValue}) async {
+  Future<void> setUserAttribute(
+      {required String attributeName, required String attributeValue}) async {
     try {
-      await methodChannel.invokeMethod('setUserAttribute');
+      await methodChannel.invokeMethod('setUserAttribute', {
+        'attributeName': attributeName,
+        'attributeValue': attributeValue
+      });
     } on PlatformException catch (e) {
       print("Failed to set user attribute: '${e.message}'.");
     }
@@ -93,7 +98,9 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
 
   Future<void> trackAction({required String action}) async {
     try {
-      await methodChannel.invokeMethod('trackAction');
+      await methodChannel.invokeMethod('trackAction', {
+        'eventTrigger': action,
+      });
     } on PlatformException catch (e) {
       print("Failed to track action: '${e.message}'.");
     }
