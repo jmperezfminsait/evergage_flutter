@@ -99,7 +99,7 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
   Future<void> trackAction({required String action}) async {
     try {
       await methodChannel.invokeMethod('trackAction', {
-        'eventTrigger': action,
+        'action': action,
       });
     } on PlatformException catch (e) {
       print("Failed to track action: '${e.message}'.");
