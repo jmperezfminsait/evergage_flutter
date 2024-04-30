@@ -28,9 +28,10 @@ public class SwiftEvergageFlutterPlugin: NSObject, FlutterPlugin {
           
           result(nil)
       case "setUser":
-          let email = arguments["email"] as? String
+          var contactId = arguments["contactId"] as? String
           
-          evergage.userId = arguments["userId"] as? String         
+          evergage.userId = arguments["contactId"] as? String
+          evergage.setUserAttribute( contactId, forName: "contactId")
           
           result(nil)
       case "setUserAttribute":
@@ -39,8 +40,8 @@ public class SwiftEvergageFlutterPlugin: NSObject, FlutterPlugin {
           
           result(nil)
       case "trackAction":
-          let action = arguments["action"] as! String
-          evergage.globalContext?.trackAction(action)
+          let eventTrigger = arguments["action"] as! String
+          evergage.globalContext?.trackAction(eventTrigger)
           result(nil)
       default:
           result(FlutterMethodNotImplemented)

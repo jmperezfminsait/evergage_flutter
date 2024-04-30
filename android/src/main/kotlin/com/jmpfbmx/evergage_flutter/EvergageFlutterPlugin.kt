@@ -87,9 +87,9 @@ class EvergageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
         val arguments = call.arguments as Map<*, *>
         val action = arguments["action"] as String
         if (screen != null) {
-          screen.trackAction(action)
+          screen.trackAction(action!!)
         } else {
-          contextEvergage?.trackAction(action)
+          contextEvergage?.trackAction(action!!)
         }
         result.success(null)
       }
