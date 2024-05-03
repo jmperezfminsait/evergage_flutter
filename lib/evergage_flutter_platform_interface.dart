@@ -52,11 +52,13 @@ abstract class EvergageFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('getUserId() has not been implemented.');
   }
 
-  Future<void> setAccountAttribute({required String attributeName, required String attributeValue}) {
+  Future<void> setAccountAttribute(
+      {required String attributeName, required String attributeValue}) {
     throw UnimplementedError('setAccountAttribute() has not been implemented.');
   }
 
-  Future<void> setUserAttribute({required String attributeName, required String attributeValue}) {
+  Future<void> setUserAttribute(
+      {required String attributeName, required String attributeValue}) {
     throw UnimplementedError('setUserAttribute() has not been implemented.');
   }
 
@@ -64,7 +66,9 @@ abstract class EvergageFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('setFirebaseToken() has not been implemented.');
   }
 
-  Future<void> trackAction({required String action}) {
-    throw UnimplementedError('trackAction() has not been implemented.');
+  Future<void> sendEvent(
+    String eventTrigger,
+  ) {
+    throw UnimplementedError('sendEvent() has not been implemented.');
   }
 }

@@ -35,8 +35,8 @@ class EvergageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
 
   override fun onMethodCall(call: MethodCall, result: Result) {
     var evergage = Evergage.getInstance()
-    val screen: Screen? = evergage.getScreenForActivity(activity)
-    val contextEvergage: com.evergage.android.Context? = evergage.globalContext
+    var screen: Screen? = evergage.getScreenForActivity(activity)
+    var contextEvergage: com.evergage.android.Context? = evergage.globalContext
 
     when (call.method) {
       "initializeEvergage" -> {
@@ -83,15 +83,14 @@ class EvergageFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
         setFirebaseToken(token)
         result.success(null)
       }
-      "trackAction" -> {
-        val arguments = call.arguments as Map<*, *>
-        val action = arguments["action"] as String
-        if (screen != null) {
-          screen.trackAction(action!!)
-        } else {
-          contextEvergage?.trackAction(action!!)
-        }
-        result.success(null)
+      "sendEvent" -> {
+        var eventTrigger = call.argument<String>("eventTrigger")
+
+        if (screen != null)
+          screen.trackAction(eventTrigger!!)
+        else
+          contextEvergage?.trackAction(eventTrigger!!)
+
       }
       "getPlatformVersion" -> {
         result.success("Android ${android.os.Build.VERSION.RELEASE}")

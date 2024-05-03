@@ -1,4 +1,3 @@
-
 import 'evergage_flutter_platform_interface.dart';
 
 class EvergageFlutter {
@@ -6,9 +5,14 @@ class EvergageFlutter {
     return EvergageFlutterPlatform.instance.getPlatformVersion();
   }
 
-  Future<void> initializeEvergage(String account, String dataset, String userId, bool usePushNotification) async {
+  Future<void> initializeEvergage(String account, String dataset, String userId,
+      bool usePushNotification) async {
     // Initialize Evergage
-    await EvergageFlutterPlatform.instance.initializeEvergage(account: account, dataset: dataset, userId: userId, usePushNotification: usePushNotification);
+    await EvergageFlutterPlatform.instance.initializeEvergage(
+        account: account,
+        dataset: dataset,
+        userId: userId,
+        usePushNotification: usePushNotification);
   }
 
   Future<void> setAccountId(String accountId) async {
@@ -27,19 +31,25 @@ class EvergageFlutter {
     await EvergageFlutterPlatform.instance.getUserId();
   }
 
-  Future<void> setAccountAttribute(String attributeName, String attributeValue) async {
-    await EvergageFlutterPlatform.instance.setAccountAttribute(attributeName: attributeName, attributeValue: attributeValue);
+  Future<void> setAccountAttribute(
+      String attributeName, String attributeValue) async {
+    await EvergageFlutterPlatform.instance.setAccountAttribute(
+        attributeName: attributeName, attributeValue: attributeValue);
   }
 
-  Future<void> setUserAttribute(String attributeName, String attributeValue) async {
-    await EvergageFlutterPlatform.instance.setUserAttribute(attributeName: attributeName, attributeValue: attributeValue);
+  Future<void> setUserAttribute(
+      String attributeName, String attributeValue) async {
+    await EvergageFlutterPlatform.instance.setUserAttribute(
+        attributeName: attributeName, attributeValue: attributeValue);
   }
 
   Future<void> setFirebaseToken(String token) async {
     await EvergageFlutterPlatform.instance.setFirebaseToken(token: token);
   }
 
-  Future<void> trackAction(String action) async {
-    await EvergageFlutterPlatform.instance.trackAction(action: action);
+  Future<void> sendEvent(
+    String eventTrigger,
+  ) {
+    return EvergageFlutterPlatform.instance.sendEvent(eventTrigger);
   }
 }

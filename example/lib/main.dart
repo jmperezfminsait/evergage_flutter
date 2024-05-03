@@ -83,8 +83,8 @@ class _MyAppState extends State<MyApp> {
     await _evergageFlutterPlugin.setFirebaseToken("");
   }
 
-  Future<void> trackAction() async {
-    await _evergageFlutterPlugin.trackAction("");
+  Future<void> sendEvent() async {
+    await _evergageFlutterPlugin.sendEvent("");
   }
 
   @override
@@ -150,7 +150,7 @@ class _MyAppState extends State<MyApp> {
               ),
               TextButton(
                 onPressed: () {
-                  trackAction();
+                  sendEvent();
                 },
                 child: const Text("Track Action"),
               ),

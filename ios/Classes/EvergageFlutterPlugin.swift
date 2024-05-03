@@ -39,8 +39,8 @@ public class SwiftEvergageFlutterPlugin: NSObject, FlutterPlugin {
           evergage.setUserAttribute(arguments["attributeValue"] as? String, forName: "attributeValue")
           
           result(nil)
-      case "trackAction":
-          let eventTrigger = arguments["action"] as! String
+      case "sendEvent":
+          let eventTrigger = arguments["eventTrigger"] as! String
           evergage.globalContext?.trackAction(eventTrigger)
           result(nil)
       default:

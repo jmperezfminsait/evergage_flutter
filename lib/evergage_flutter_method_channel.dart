@@ -16,6 +16,7 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     return version;
   }
 
+  @override
   Future<void> initializeEvergage({
     required String account,
     required String dataset,
@@ -34,6 +35,7 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
+  @override
   Future<void> setAccountId({required String accountId}) async {
     try {
       await methodChannel
@@ -43,6 +45,7 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
+  @override
   Future<void> getAccountId() async {
     try {
       await methodChannel.invokeMethod('getAccountId');
@@ -51,6 +54,7 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
+  @override
   Future<void> getAnonymousId() async {
     try {
       await methodChannel.invokeMethod('getAnonymousId');
@@ -59,6 +63,7 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
+  @override
   Future<void> getUserId() async {
     try {
       await methodChannel.invokeMethod('getUserId');
@@ -67,6 +72,7 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
+  @override
   Future<void> setAccountAttribute(
       {required String attributeName, required String attributeValue}) async {
     try {
@@ -76,18 +82,18 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
+  @override
   Future<void> setUserAttribute(
       {required String attributeName, required String attributeValue}) async {
     try {
-      await methodChannel.invokeMethod('setUserAttribute', {
-        'attributeName': attributeName,
-        'attributeValue': attributeValue
-      });
+      await methodChannel.invokeMethod('setUserAttribute',
+          {'attributeName': attributeName, 'attributeValue': attributeValue});
     } on PlatformException catch (e) {
       print("Failed to set user attribute: '${e.message}'.");
     }
   }
 
+  @override
   Future<void> setFirebaseToken({required String token}) async {
     try {
       await methodChannel.invokeMethod('setFirebaseToken');
@@ -96,13 +102,12 @@ class MethodChannelEvergageFlutter extends EvergageFlutterPlatform {
     }
   }
 
-  Future<void> trackAction({required String action}) async {
-    try {
-      await methodChannel.invokeMethod('trackAction', {
-        'action': action,
-      });
-    } on PlatformException catch (e) {
-      print("Failed to track action: '${e.message}'.");
-    }
+  @override
+  Future<void> sendEvent(
+    String eventTrigger,
+  ) async {
+    await methodChannel.invokeMethod('sendEvent', {
+      'eventTrigger': eventTrigger,
+    });
   }
 }

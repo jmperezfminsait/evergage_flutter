@@ -60,8 +60,8 @@ class MockEvergageFlutterPlatform
   }
 
   @override
-  Future<void> trackAction({required String action}) {
-    // TODO: implement trackAction
+  Future<void> sendEvent(String eventTrigger,) {
+    // TODO: implement viewCategory
     throw UnimplementedError();
   }
 }
